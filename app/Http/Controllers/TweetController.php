@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tweet;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class TweetController extends Controller
 {
@@ -12,15 +13,9 @@ class TweetController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return Inertia::render('Welcome', [
+            'tweets' => Tweet::orderBy('id', 'desc')->get()
+        ]);
     }
 
     /**
